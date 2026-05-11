@@ -1,5 +1,7 @@
 ## Todo Tauri
 
+![App screenshot](assets\images\app.png)
+
 A Todo app built with [Tauri](https://tauri.app)
 
 I wrote a step-by-step developer blog article explaining how this app was built with Tauri, React, Rust, and SQLite:
