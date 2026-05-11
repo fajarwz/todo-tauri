@@ -31,25 +31,16 @@ function App() {
   useEffect(() => {
     async function initDb() {
       try {
-        // This creates (or opens) a file-based SQLite database in the app's data dir.
-        // On Windows the file lives at:
-        //   %APPDATA%/com.todo-app.dev/todo.db
+        // Open the SQLite database from the app data directory
         const database = await Database.load("sqlite:todo.db");
-        setDb(database);
 
-        await database.execute(
-          `CREATE TABLE IF NOT EXISTS todos (
-            id          INTEGER PRIMARY KEY AUTOINCREMENT,
-            text        TEXT NOT NULL,
-            completed   INTEGER NOT NULL DEFAULT 0,
-            created_at  TEXT NOT NULL DEFAULT (datetime('now'))
-          )`
-        );
+        setDb(database);
 
         // Load existing todos
         const rows = await database.select<Todo[]>(
           "SELECT * FROM todos ORDER BY created_at DESC"
         );
+
         setTodos(rows);
       } catch (e) {
         setError(String(e));
@@ -57,6 +48,7 @@ function App() {
         setLoading(false);
       }
     }
+
     initDb();
   }, []);
 
