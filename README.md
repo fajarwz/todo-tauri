@@ -1,6 +1,6 @@
 ## Todo Tauri
 
-![App screenshot](assets\images\app.png)
+![App screenshot](assets/images/app.png)
 
 A Todo app built with [Tauri](https://tauri.app)
 
